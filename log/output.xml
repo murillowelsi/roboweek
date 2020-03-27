@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.5 on linux)" generated="20200327 10:22:17.932" rpa="false">
+<suite id="s1" name="Cadastro" source="/home/murillo/robot-framework/roboweek/roboweek-1a-edicao/tests/cadastro.robot">
+<kw name="Inicia Sessao" library="keywords" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20200327 10:22:18.105" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<status status="PASS" starttime="20200327 10:22:18.104" endtime="20200327 10:22:19.181"></status>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>1200</arg>
+<arg>800</arg>
+</arguments>
+<status status="PASS" starttime="20200327 10:22:19.185" endtime="20200327 10:22:19.302"></status>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<status status="PASS" starttime="20200327 10:22:19.303" endtime="20200327 10:22:19.306"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:18.103" endtime="20200327 10:22:19.306"></status>
+</kw>
+<test id="s1-t1" name="Cadastrar novo jogo">
+<kw name="Dado que eu tenho o seguinte produto" library="keywords">
+<arguments>
+<arg>Pitfal</arg>
+<arg>Aventura na selva</arg>
+<arg>19.99</arg>
+<arg>10</arg>
+</arguments>
+<kw name="Deleta pelo nome" library="keywords">
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<kw name="Conecta no Banco SQLite" library="keywords">
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_custom_param_string`.</doc>
+<arguments>
+<arg>sqlite3</arg>
+<arg>database="db/development.sqlite3", isolation_level=None</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.312" level="INFO">Executing : Connect To Database Using Custom Params : sqlite3.connect(db_api_2.connect(database="db/development.sqlite3", isolation_level=None)) </msg>
+<status status="PASS" starttime="20200327 10:22:19.309" endtime="20200327 10:22:19.313"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:19.308" endtime="20200327 10:22:19.313"></status>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>delete from produtos where nome = '${nome_produto}'</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.314" level="INFO">Executing : Execute SQL String  |  delete from produtos where nome = 'Pitfal' </msg>
+<status status="PASS" starttime="20200327 10:22:19.313" endtime="20200327 10:22:19.315"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:19.308" endtime="20200327 10:22:19.315"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.317" level="INFO">${nome} = Pitfal</msg>
+<status status="PASS" starttime="20200327 10:22:19.316" endtime="20200327 10:22:19.318"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.318" level="INFO">${desc} = Aventura na selva</msg>
+<status status="PASS" starttime="20200327 10:22:19.318" endtime="20200327 10:22:19.319"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.319" level="INFO">${preco} = 19.99</msg>
+<status status="PASS" starttime="20200327 10:22:19.319" endtime="20200327 10:22:19.319"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.320" level="INFO">${qdt} = 10</msg>
+<status status="PASS" starttime="20200327 10:22:19.319" endtime="20200327 10:22:19.320"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:19.307" endtime="20200327 10:22:19.320"></status>
+</kw>
+<kw name="E acesso o portal de cadastro de jogos" library="keywords">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/produtos/new</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.323" level="INFO">Opening url 'http://localhost:3000/produtos/new'</msg>
+<status status="PASS" starttime="20200327 10:22:19.321" endtime="20200327 10:22:19.462"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:19.320" endtime="20200327 10:22:19.464"></status>
+</kw>
+<kw name="Quando eu faço o cadastro deste item" library="keywords">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_NOME}</arg>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.467" level="INFO">Typing text 'Pitfal' into text field 'id:produto_nome'.</msg>
+<status status="PASS" starttime="20200327 10:22:19.466" endtime="20200327 10:22:19.657"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_DESC}</arg>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.657" level="INFO">Typing text 'Aventura na selva' into text field 'id:produto_descricao'.</msg>
+<status status="PASS" starttime="20200327 10:22:19.657" endtime="20200327 10:22:19.931"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_PRECO}</arg>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:19.932" level="INFO">Typing text '19.99' into text field 'id:produto_preco'.</msg>
+<status status="PASS" starttime="20200327 10:22:19.931" endtime="20200327 10:22:20.129"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_QTD}</arg>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.130" level="INFO">Typing text '10' into text field 'id:produto_quantidade'.</msg>
+<status status="PASS" starttime="20200327 10:22:20.129" endtime="20200327 10:22:20.309"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BT_CRIAR_PRODUTO}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.310" level="INFO">Clicking element 'xpath://input[@value='Criar Produto']'.</msg>
+<status status="PASS" starttime="20200327 10:22:20.309" endtime="20200327 10:22:20.603"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:19.465" endtime="20200327 10:22:20.603"></status>
+</kw>
+<kw name="Então vejo a mensagem de sucesso &quot;Produto cadastrado com sucesso.&quot;" library="keywords">
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${ALERTA_SUCESSO}</arg>
+<arg>${mensagem esperada}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.661" level="INFO">Element 'css:div[role=alert]' contains text 'Produto cadastrado com sucesso.'.</msg>
+<status status="PASS" starttime="20200327 10:22:20.607" endtime="20200327 10:22:20.662"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:20.605" endtime="20200327 10:22:20.662"></status>
+</kw>
+<kw name="E vejo este novo jogo na lista" library="keywords">
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${LISTA_JOGOS}</arg>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.729" level="INFO">Element 'css:table tbody' contains text 'Pitfal'.</msg>
+<status status="PASS" starttime="20200327 10:22:20.665" endtime="20200327 10:22:20.730"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:20.664" endtime="20200327 10:22:20.730"></status>
+</kw>
+<kw name="Depois do teste" library="keywords" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200327 10:22:20.882" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200327 10:22:20.732" endtime="20200327 10:22:20.883"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:20.731" endtime="20200327 10:22:20.883"></status>
+</kw>
+<tags>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" starttime="20200327 10:22:19.306" endtime="20200327 10:22:20.883" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Jogo não pode ser duplicado">
+<kw name="Dado que eu tenho o seguinte produto" library="keywords">
+<arguments>
+<arg>Enduro</arg>
+<arg>Clássico de corrida</arg>
+<arg>20.30</arg>
+<arg>40</arg>
+</arguments>
+<kw name="Deleta pelo nome" library="keywords">
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<kw name="Conecta no Banco SQLite" library="keywords">
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_custom_param_string`.</doc>
+<arguments>
+<arg>sqlite3</arg>
+<arg>database="db/development.sqlite3", isolation_level=None</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.892" level="INFO">Executing : Connect To Database Using Custom Params : sqlite3.connect(db_api_2.connect(database="db/development.sqlite3", isolation_level=None)) </msg>
+<status status="PASS" starttime="20200327 10:22:20.891" endtime="20200327 10:22:20.893"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:20.890" endtime="20200327 10:22:20.893"></status>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>delete from produtos where nome = '${nome_produto}'</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.895" level="INFO">Executing : Execute SQL String  |  delete from produtos where nome = 'Enduro' </msg>
+<status status="PASS" starttime="20200327 10:22:20.894" endtime="20200327 10:22:20.902"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:20.890" endtime="20200327 10:22:20.902"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.903" level="INFO">${nome} = Enduro</msg>
+<status status="PASS" starttime="20200327 10:22:20.903" endtime="20200327 10:22:20.903"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.905" level="INFO">${desc} = Clássico de corrida</msg>
+<status status="PASS" starttime="20200327 10:22:20.904" endtime="20200327 10:22:20.905"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.907" level="INFO">${preco} = 20.30</msg>
+<status status="PASS" starttime="20200327 10:22:20.906" endtime="20200327 10:22:20.907"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.908" level="INFO">${qdt} = 40</msg>
+<status status="PASS" starttime="20200327 10:22:20.907" endtime="20200327 10:22:20.908"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:20.889" endtime="20200327 10:22:20.908"></status>
+</kw>
+<kw name="E acesso o portal de cadastro de jogos" library="keywords">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/produtos/new</arg>
+</arguments>
+<msg timestamp="20200327 10:22:20.910" level="INFO">Opening url 'http://localhost:3000/produtos/new'</msg>
+<status status="PASS" starttime="20200327 10:22:20.909" endtime="20200327 10:22:21.072"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:20.909" endtime="20200327 10:22:21.072"></status>
+</kw>
+<kw name="Mas este produto já foi cadastrado" library="keywords">
+<kw name="Quando eu faço o cadastro deste item" library="keywords">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_NOME}</arg>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:21.081" level="INFO">Typing text 'Enduro' into text field 'id:produto_nome'.</msg>
+<status status="PASS" starttime="20200327 10:22:21.080" endtime="20200327 10:22:21.242"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_DESC}</arg>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:21.242" level="INFO">Typing text 'Clássico de corrida' into text field 'id:produto_descricao'.</msg>
+<status status="PASS" starttime="20200327 10:22:21.242" endtime="20200327 10:22:21.748"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_PRECO}</arg>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:21.749" level="INFO">Typing text '20.30' into text field 'id:produto_preco'.</msg>
+<status status="PASS" starttime="20200327 10:22:21.748" endtime="20200327 10:22:21.902"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_QTD}</arg>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:21.903" level="INFO">Typing text '40' into text field 'id:produto_quantidade'.</msg>
+<status status="PASS" starttime="20200327 10:22:21.902" endtime="20200327 10:22:22.077"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BT_CRIAR_PRODUTO}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:22.078" level="INFO">Clicking element 'xpath://input[@value='Criar Produto']'.</msg>
+<status status="PASS" starttime="20200327 10:22:22.077" endtime="20200327 10:22:22.420"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:21.078" endtime="20200327 10:22:22.421"></status>
+</kw>
+<kw name="E acesso o portal de cadastro de jogos" library="keywords">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/produtos/new</arg>
+</arguments>
+<msg timestamp="20200327 10:22:22.430" level="INFO">Opening url 'http://localhost:3000/produtos/new'</msg>
+<status status="PASS" starttime="20200327 10:22:22.422" endtime="20200327 10:22:22.576"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:22.421" endtime="20200327 10:22:22.576"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:21.074" endtime="20200327 10:22:22.577"></status>
+</kw>
+<kw name="Quando eu faço o cadastro deste item" library="keywords">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_NOME}</arg>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:22.579" level="INFO">Typing text 'Enduro' into text field 'id:produto_nome'.</msg>
+<status status="PASS" starttime="20200327 10:22:22.579" endtime="20200327 10:22:22.799"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_DESC}</arg>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:22.799" level="INFO">Typing text 'Clássico de corrida' into text field 'id:produto_descricao'.</msg>
+<status status="PASS" starttime="20200327 10:22:22.799" endtime="20200327 10:22:23.106"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_PRECO}</arg>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.107" level="INFO">Typing text '20.30' into text field 'id:produto_preco'.</msg>
+<status status="PASS" starttime="20200327 10:22:23.106" endtime="20200327 10:22:23.282"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_QTD}</arg>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.283" level="INFO">Typing text '40' into text field 'id:produto_quantidade'.</msg>
+<status status="PASS" starttime="20200327 10:22:23.282" endtime="20200327 10:22:23.436"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BT_CRIAR_PRODUTO}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.437" level="INFO">Clicking element 'xpath://input[@value='Criar Produto']'.</msg>
+<status status="PASS" starttime="20200327 10:22:23.436" endtime="20200327 10:22:23.742"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:22.578" endtime="20200327 10:22:23.742"></status>
+</kw>
+<kw name="Então vejo a mensagem de alerta &quot;Nome já está em uso&quot;" library="keywords">
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${ALERTA_FALHA}</arg>
+<arg>${mensagem esperada}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.802" level="INFO">Element 'class:alert-danger' contains text 'Nome já está em uso'.</msg>
+<status status="PASS" starttime="20200327 10:22:23.747" endtime="20200327 10:22:23.803"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:23.743" endtime="20200327 10:22:23.803"></status>
+</kw>
+<kw name="Depois do teste" library="keywords" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200327 10:22:23.942" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200327 10:22:23.804" endtime="20200327 10:22:23.942"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:23.803" endtime="20200327 10:22:23.942"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:20.885" endtime="20200327 10:22:23.943" critical="yes"></status>
+</test>
+<test id="s1-t3" name="Nome deve ser obrigatório">
+<kw name="Tentar Cadastrar">
+<arguments>
+<arg>${EMPTY}</arg>
+<arg>19.99</arg>
+<arg>10</arg>
+<arg>Nome não pode ficar em branco</arg>
+</arguments>
+<kw name="Dado que eu tenho o seguinte produto" library="keywords">
+<arguments>
+<arg>${nome}</arg>
+<arg>Aventura na selva</arg>
+<arg>${preco}</arg>
+<arg>${qtd}</arg>
+</arguments>
+<kw name="Deleta pelo nome" library="keywords">
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<kw name="Conecta no Banco SQLite" library="keywords">
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_custom_param_string`.</doc>
+<arguments>
+<arg>sqlite3</arg>
+<arg>database="db/development.sqlite3", isolation_level=None</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.948" level="INFO">Executing : Connect To Database Using Custom Params : sqlite3.connect(db_api_2.connect(database="db/development.sqlite3", isolation_level=None)) </msg>
+<status status="PASS" starttime="20200327 10:22:23.947" endtime="20200327 10:22:23.948"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:23.947" endtime="20200327 10:22:23.948"></status>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>delete from produtos where nome = '${nome_produto}'</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.949" level="INFO">Executing : Execute SQL String  |  delete from produtos where nome = '' </msg>
+<status status="PASS" starttime="20200327 10:22:23.949" endtime="20200327 10:22:23.949"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:23.947" endtime="20200327 10:22:23.950"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.950" level="INFO">${nome} = </msg>
+<status status="PASS" starttime="20200327 10:22:23.950" endtime="20200327 10:22:23.950"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.951" level="INFO">${desc} = Aventura na selva</msg>
+<status status="PASS" starttime="20200327 10:22:23.950" endtime="20200327 10:22:23.951"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.951" level="INFO">${preco} = 19.99</msg>
+<status status="PASS" starttime="20200327 10:22:23.951" endtime="20200327 10:22:23.951"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.952" level="INFO">${qdt} = 10</msg>
+<status status="PASS" starttime="20200327 10:22:23.952" endtime="20200327 10:22:23.952"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:23.946" endtime="20200327 10:22:23.952"></status>
+</kw>
+<kw name="E acesso o portal de cadastro de jogos" library="keywords">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/produtos/new</arg>
+</arguments>
+<msg timestamp="20200327 10:22:23.953" level="INFO">Opening url 'http://localhost:3000/produtos/new'</msg>
+<status status="PASS" starttime="20200327 10:22:23.953" endtime="20200327 10:22:24.117"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:23.952" endtime="20200327 10:22:24.117"></status>
+</kw>
+<kw name="Quando eu faço o cadastro deste item" library="keywords">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_NOME}</arg>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:24.119" level="INFO">Typing text '' into text field 'id:produto_nome'.</msg>
+<status status="PASS" starttime="20200327 10:22:24.118" endtime="20200327 10:22:24.234"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_DESC}</arg>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:24.236" level="INFO">Typing text 'Aventura na selva' into text field 'id:produto_descricao'.</msg>
+<status status="PASS" starttime="20200327 10:22:24.235" endtime="20200327 10:22:24.482"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_PRECO}</arg>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:24.484" level="INFO">Typing text '19.99' into text field 'id:produto_preco'.</msg>
+<status status="PASS" starttime="20200327 10:22:24.482" endtime="20200327 10:22:24.671"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_QTD}</arg>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:24.671" level="INFO">Typing text '10' into text field 'id:produto_quantidade'.</msg>
+<status status="PASS" starttime="20200327 10:22:24.671" endtime="20200327 10:22:24.840"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BT_CRIAR_PRODUTO}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:24.841" level="INFO">Clicking element 'xpath://input[@value='Criar Produto']'.</msg>
+<status status="PASS" starttime="20200327 10:22:24.841" endtime="20200327 10:22:25.093"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:24.118" endtime="20200327 10:22:25.094"></status>
+</kw>
+<kw name="Então vejo a mensagem de alerta &quot;${alerta}&quot;" library="keywords">
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${ALERTA_FALHA}</arg>
+<arg>${mensagem esperada}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.132" level="INFO">Element 'class:alert-danger' contains text 'Nome não pode ficar em branco'.</msg>
+<status status="PASS" starttime="20200327 10:22:25.095" endtime="20200327 10:22:25.133"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:25.094" endtime="20200327 10:22:25.133"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:23.945" endtime="20200327 10:22:25.133"></status>
+</kw>
+<kw name="Depois do teste" library="keywords" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200327 10:22:25.278" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200327 10:22:25.134" endtime="20200327 10:22:25.279"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:25.133" endtime="20200327 10:22:25.280"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:23.944" endtime="20200327 10:22:25.280" critical="yes"></status>
+</test>
+<test id="s1-t4" name="Preço deve ser obrigatório">
+<kw name="Tentar Cadastrar">
+<arguments>
+<arg>Pitfal</arg>
+<arg>${EMPTY}</arg>
+<arg>10</arg>
+<arg>Preco não pode ficar em branco</arg>
+</arguments>
+<kw name="Dado que eu tenho o seguinte produto" library="keywords">
+<arguments>
+<arg>${nome}</arg>
+<arg>Aventura na selva</arg>
+<arg>${preco}</arg>
+<arg>${qtd}</arg>
+</arguments>
+<kw name="Deleta pelo nome" library="keywords">
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<kw name="Conecta no Banco SQLite" library="keywords">
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_custom_param_string`.</doc>
+<arguments>
+<arg>sqlite3</arg>
+<arg>database="db/development.sqlite3", isolation_level=None</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.286" level="INFO">Executing : Connect To Database Using Custom Params : sqlite3.connect(db_api_2.connect(database="db/development.sqlite3", isolation_level=None)) </msg>
+<status status="PASS" starttime="20200327 10:22:25.286" endtime="20200327 10:22:25.288"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:25.285" endtime="20200327 10:22:25.288"></status>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>delete from produtos where nome = '${nome_produto}'</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.289" level="INFO">Executing : Execute SQL String  |  delete from produtos where nome = 'Pitfal' </msg>
+<status status="PASS" starttime="20200327 10:22:25.289" endtime="20200327 10:22:25.295"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:25.285" endtime="20200327 10:22:25.295"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.297" level="INFO">${nome} = Pitfal</msg>
+<status status="PASS" starttime="20200327 10:22:25.296" endtime="20200327 10:22:25.297"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.298" level="INFO">${desc} = Aventura na selva</msg>
+<status status="PASS" starttime="20200327 10:22:25.297" endtime="20200327 10:22:25.298"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.300" level="INFO">${preco} = </msg>
+<status status="PASS" starttime="20200327 10:22:25.298" endtime="20200327 10:22:25.300"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.301" level="INFO">${qdt} = 10</msg>
+<status status="PASS" starttime="20200327 10:22:25.300" endtime="20200327 10:22:25.301"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:25.284" endtime="20200327 10:22:25.301"></status>
+</kw>
+<kw name="E acesso o portal de cadastro de jogos" library="keywords">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/produtos/new</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.302" level="INFO">Opening url 'http://localhost:3000/produtos/new'</msg>
+<status status="PASS" starttime="20200327 10:22:25.302" endtime="20200327 10:22:25.446"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:25.301" endtime="20200327 10:22:25.447"></status>
+</kw>
+<kw name="Quando eu faço o cadastro deste item" library="keywords">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_NOME}</arg>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.447" level="INFO">Typing text 'Pitfal' into text field 'id:produto_nome'.</msg>
+<status status="PASS" starttime="20200327 10:22:25.447" endtime="20200327 10:22:25.593"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_DESC}</arg>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.594" level="INFO">Typing text 'Aventura na selva' into text field 'id:produto_descricao'.</msg>
+<status status="PASS" starttime="20200327 10:22:25.594" endtime="20200327 10:22:25.868"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_PRECO}</arg>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.869" level="INFO">Typing text '' into text field 'id:produto_preco'.</msg>
+<status status="PASS" starttime="20200327 10:22:25.868" endtime="20200327 10:22:25.990"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_QTD}</arg>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:25.993" level="INFO">Typing text '10' into text field 'id:produto_quantidade'.</msg>
+<status status="PASS" starttime="20200327 10:22:25.992" endtime="20200327 10:22:26.151"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BT_CRIAR_PRODUTO}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.151" level="INFO">Clicking element 'xpath://input[@value='Criar Produto']'.</msg>
+<status status="PASS" starttime="20200327 10:22:26.151" endtime="20200327 10:22:26.428"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:25.447" endtime="20200327 10:22:26.429"></status>
+</kw>
+<kw name="Então vejo a mensagem de alerta &quot;${alerta}&quot;" library="keywords">
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${ALERTA_FALHA}</arg>
+<arg>${mensagem esperada}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.468" level="INFO">Element 'class:alert-danger' contains text 'Preco não pode ficar em branco'.</msg>
+<status status="PASS" starttime="20200327 10:22:26.430" endtime="20200327 10:22:26.468"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:26.429" endtime="20200327 10:22:26.468"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:25.283" endtime="20200327 10:22:26.468"></status>
+</kw>
+<kw name="Depois do teste" library="keywords" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200327 10:22:26.626" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200327 10:22:26.469" endtime="20200327 10:22:26.626"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:26.468" endtime="20200327 10:22:26.627"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:25.282" endtime="20200327 10:22:26.627" critical="yes"></status>
+</test>
+<test id="s1-t5" name="Quantidade deve ser obrigatório">
+<kw name="Tentar Cadastrar">
+<arguments>
+<arg>Pitfal</arg>
+<arg>19.99</arg>
+<arg>${EMPTY}</arg>
+<arg>Quantidade não pode ficar em branco</arg>
+</arguments>
+<kw name="Dado que eu tenho o seguinte produto" library="keywords">
+<arguments>
+<arg>${nome}</arg>
+<arg>Aventura na selva</arg>
+<arg>${preco}</arg>
+<arg>${qtd}</arg>
+</arguments>
+<kw name="Deleta pelo nome" library="keywords">
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<kw name="Conecta no Banco SQLite" library="keywords">
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_custom_param_string`.</doc>
+<arguments>
+<arg>sqlite3</arg>
+<arg>database="db/development.sqlite3", isolation_level=None</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.633" level="INFO">Executing : Connect To Database Using Custom Params : sqlite3.connect(db_api_2.connect(database="db/development.sqlite3", isolation_level=None)) </msg>
+<status status="PASS" starttime="20200327 10:22:26.632" endtime="20200327 10:22:26.634"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:26.632" endtime="20200327 10:22:26.634"></status>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>delete from produtos where nome = '${nome_produto}'</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.635" level="INFO">Executing : Execute SQL String  |  delete from produtos where nome = 'Pitfal' </msg>
+<status status="PASS" starttime="20200327 10:22:26.634" endtime="20200327 10:22:26.635"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:26.631" endtime="20200327 10:22:26.635"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.636" level="INFO">${nome} = Pitfal</msg>
+<status status="PASS" starttime="20200327 10:22:26.636" endtime="20200327 10:22:26.636"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.637" level="INFO">${desc} = Aventura na selva</msg>
+<status status="PASS" starttime="20200327 10:22:26.637" endtime="20200327 10:22:26.638"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.639" level="INFO">${preco} = 19.99</msg>
+<status status="PASS" starttime="20200327 10:22:26.638" endtime="20200327 10:22:26.639"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.640" level="INFO">${qdt} = </msg>
+<status status="PASS" starttime="20200327 10:22:26.639" endtime="20200327 10:22:26.640"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:26.630" endtime="20200327 10:22:26.640"></status>
+</kw>
+<kw name="E acesso o portal de cadastro de jogos" library="keywords">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${BASE_URL}/produtos/new</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.641" level="INFO">Opening url 'http://localhost:3000/produtos/new'</msg>
+<status status="PASS" starttime="20200327 10:22:26.641" endtime="20200327 10:22:26.795"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:26.640" endtime="20200327 10:22:26.796"></status>
+</kw>
+<kw name="Quando eu faço o cadastro deste item" library="keywords">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_NOME}</arg>
+<arg>${nome}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.797" level="INFO">Typing text 'Pitfal' into text field 'id:produto_nome'.</msg>
+<status status="PASS" starttime="20200327 10:22:26.797" endtime="20200327 10:22:26.959"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_DESC}</arg>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:26.960" level="INFO">Typing text 'Aventura na selva' into text field 'id:produto_descricao'.</msg>
+<status status="PASS" starttime="20200327 10:22:26.960" endtime="20200327 10:22:27.196"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_PRECO}</arg>
+<arg>${preco}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:27.197" level="INFO">Typing text '19.99' into text field 'id:produto_preco'.</msg>
+<status status="PASS" starttime="20200327 10:22:27.196" endtime="20200327 10:22:27.371"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CAMPO_QTD}</arg>
+<arg>${qdt}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:27.372" level="INFO">Typing text '' into text field 'id:produto_quantidade'.</msg>
+<status status="PASS" starttime="20200327 10:22:27.371" endtime="20200327 10:22:27.514"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BT_CRIAR_PRODUTO}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:27.515" level="INFO">Clicking element 'xpath://input[@value='Criar Produto']'.</msg>
+<status status="PASS" starttime="20200327 10:22:27.514" endtime="20200327 10:22:27.800"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:26.796" endtime="20200327 10:22:27.800"></status>
+</kw>
+<kw name="Então vejo a mensagem de alerta &quot;${alerta}&quot;" library="keywords">
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${ALERTA_FALHA}</arg>
+<arg>${mensagem esperada}</arg>
+</arguments>
+<msg timestamp="20200327 10:22:27.847" level="INFO">Element 'class:alert-danger' contains text 'Quantidade não pode ficar em branco'.</msg>
+<status status="PASS" starttime="20200327 10:22:27.806" endtime="20200327 10:22:27.847"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:27.801" endtime="20200327 10:22:27.848"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:26.629" endtime="20200327 10:22:27.848"></status>
+</kw>
+<kw name="Depois do teste" library="keywords" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200327 10:22:27.989" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200327 10:22:27.850" endtime="20200327 10:22:27.989"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:27.848" endtime="20200327 10:22:27.990"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:26.628" endtime="20200327 10:22:27.990" critical="yes"></status>
+</test>
+<kw name="Encerra Sessao" library="keywords" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200327 10:22:27.995" endtime="20200327 10:22:28.072"></status>
+</kw>
+<status status="PASS" starttime="20200327 10:22:27.994" endtime="20200327 10:22:28.073"></status>
+</kw>
+<doc>Cadastro de jogos</doc>
+<status status="PASS" starttime="20200327 10:22:17.932" endtime="20200327 10:22:28.073"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0">Critical Tests</stat>
+<stat pass="5" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">smoke</stat>
+</tag>
+<suite>
+<stat pass="5" fail="0" id="s1" name="Cadastro">Cadastro</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
